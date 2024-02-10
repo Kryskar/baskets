@@ -11,6 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Product } from "./App";
+import { StyledDiv } from "./components/StyledDashboard";
 
 ChartJS.register(
   CategoryScale,
@@ -23,8 +24,8 @@ ChartJS.register(
 );
 
 export function Chart() {
-  const { state: basket }:{state:Product[]} = useLocation();
-  console.log(basket)
+  const { state: basket }: { state: Product[] } = useLocation();
+  console.log(basket);
   const navigate = useNavigate();
   const options = {
     responsive: true,
@@ -59,9 +60,20 @@ export function Chart() {
     ],
   };
   return (
-    <div style={{ width: "1000px" }}>
-      <Line options={options} data={data} />{" "}
-      <button onClick={() => navigate("/")}>home</button>
-    </div>
+    <StyledDiv>
+      <div
+        style={{
+          width: "1200px",
+          backgroundColor: "#ececf3",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "15px",
+        }}
+      >
+        <Line options={options} data={data} />{" "}
+        <button onClick={() => navigate("/")}>home</button>
+      </div>
+    </StyledDiv>
   );
 }
