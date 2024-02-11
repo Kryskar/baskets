@@ -1,11 +1,12 @@
-import { useMutation, useQueryClient } from "react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { deleteCart } from "./api"
 
 
 export const useMutateCart = ()=> {
     const queryClient = useQueryClient()
-    const {mutate} = useMutation({mutationFn:(id:string|number)=>deleteCart(id), onSuccess:()=>{
-        queryClient.invalidateQueries('carts')
+    const {mutate} = useMutation({mutationFn:(id:number)=>deleteCart(id), onSuccess:()=>{
+        console.log("succes")
+        queryClient.invalidateQueries("carts")
     }})
     return {mutate}
 }

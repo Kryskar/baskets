@@ -34,7 +34,7 @@ font-weight:600;
 export const Card = ({ basket }: { basket: Cart }) => {
   const [cardState, setCardState] = useState(0);
   const navigate = useNavigate();
-  // const {mutate} = useMutateCart()
+  const {mutate} = useMutateCart()
 
   const handleClick = () => {
     if (cardState < 1) {
@@ -68,7 +68,7 @@ export const Card = ({ basket }: { basket: Cart }) => {
         <>
           {cardRender}
           <div style={{display:"flex", gap:"10px"}}><button onClick={() => handleClick()}>next</button>
-          <button>delete</button></div>
+          <button onClick={()=>mutate(basket.id)}>delete</button></div>
         </>
       </StyledCard>
     </>

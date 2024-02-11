@@ -26,9 +26,10 @@ export const Dashboard = () => {
     
   useEffect(()=>{ 
     setBaskets(data?.carts)
+    console.log(data?.carts)
 },[data])
 
-  console.log(baskets)
+  
   return (
     <StyledDiv>
     <StyledDashboard>
