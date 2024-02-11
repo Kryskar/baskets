@@ -4,8 +4,8 @@ import { deleteCart } from "./api"
 
 export const useMutateCart = ()=> {
     const queryClient = useQueryClient()
-    const {mutate} = useMutation({mutationFn:(id:number)=>deleteCart(id), onSuccess:()=>{
-        console.log("succes")
+    const {mutate} = useMutation({mutationFn:(id:number)=>deleteCart(id), onSuccess:(data)=>{
+        // console.log("succes", data)
         queryClient.invalidateQueries("carts")
     }})
     return {mutate}
